@@ -73,7 +73,6 @@ DEPENDENCIES
   jekyll (~> 4.2.2)
   jekyll-seo-tag (~> 2.8)
   just-the-docs (~> 0.3.3)
-  kramdown (~> 2.4)
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)

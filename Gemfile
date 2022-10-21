@@ -41,5 +41,3 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 # Required for Ruby 3 & Jekyll
 gem "webrick", "~> 1.7"
-
-gem "kramdown", "~> 2.4"
