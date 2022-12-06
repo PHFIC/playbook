@@ -1,3 +1,4 @@
+// palette.scss
 // custom color palette
 
 $white: #f8f9fa !default;
@@ -37,11 +38,13 @@ $red-100: darken($red-000, 10%) !default;
 $red-200: darken($red-000, 20%) !default;
 $red-300: darken($red-000, 30%) !default;
 
+
 $primary: #e64c3c !default;
 $primary-000: $primary !default;
 $primary-100: darken($primary, 10%) !default;
 $primary-200: darken($primary, 20%) !default;
 $primary-300: darken($primary, 30%) !default;
+
 
 $secondary: #f7941d !default;
 $secondary-000: $secondary !default;
@@ -52,6 +55,7 @@ $secondary-300: darken($secondary, 30%) !default;
 $dark: #414020 !default;
 $dark-000: $dark;
 
+/*
 $body-background-color: $white !default;
 $sidebar-color: $primary-000 !default;
 $search-background-color: $white !default;
@@ -65,3 +69,4 @@ $nav-child-link-color: $dark !default;
 $link-color: $primary-000 !default;
 $btn-primary-color: $primary-100 !default;
 $base-button-color: $secondary !default;
+*/
