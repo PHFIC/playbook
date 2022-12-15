@@ -1,6 +1,6 @@
 # FHIR® Playbook for Public Health
 
-![Build Status](https://img.shields.io/github/workflow/status/phfic/playbook/workflows/jekyll.yml?branch=main)
+![Build Status](https://img.shields.io/github/actions/workflow/status/phfic/playbook/jekyll.yml?branch=main)
 ![GitHub Pages Status](https://img.shields.io/github/deployments/phfic/playbook/github-pages?color=blue&label=pages)
 ![Release Status](https://img.shields.io/badge/release-draft-red)
 
