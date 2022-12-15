@@ -1,0 +1,22 @@
+$primary: #871a4e;
+$secondary: #f7941d;
+$tertiary: #e64c3c;
+$black: darken($primary, 20%);
+
+$body-background-color: $grey-dk-300;
+$sidebar-color: lighten($secondary, 10%);
+$border-color: $primary;
+
+$body-text-color: $black;
+$body-heading-color: $black;
+$nav-child-link-color: $blue-100;
+$search-result-preview-color: $grey-dk-000;
+
+$link-color: $blue-000;
+$btn-primary-color: $primary;
+$base-button-color: $tertiary;
+
+$code-background-color: $grey-dk-250;
+$search-background-color: $grey-dk-250;
+$table-background-color: $grey-dk-250;
+$feedback-color: darken($sidebar-color, 3%);
