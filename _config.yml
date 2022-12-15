@@ -20,11 +20,11 @@
 
 title: PHFIC Playbook
 email: phfic@mitre.org
-description: >- # this means to ignore newlines until "baseurl:"
+description: >-
     The official playbook for bringing Fast Healthcare Interoperability
     Resources (FHIR&reg;) to public health.
-baseurl: "/playbook" # the subpath of your site, e.g. /blog
-url: "https://phfic.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/playbook"
+url: "https://phfic.github.io"
 # twitter_username: jekyllrb
 github_username:  phfic
 
@@ -32,9 +32,10 @@ permalink: pretty
 
 # Build settings
 theme: just-the-docs
-plugins:
+
+#plugins:
   # - jekyll-feed
-  - jekyll-seo-tag
+  # - jekyll-seo-tag
 
 exclude:
  # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
@@ -53,7 +54,7 @@ exclude:
    - README.md
 
 # Set a path/url to a logo that will be displayed instead of the title
-#logo: "/assets/images/just-the-docs.png" ## TODO
+logo: "/assets/images/PHFIC_LogoAlt_Color@3x.png"
 
 # Enable or disable the site search
 # Supports true (default) or false
@@ -137,8 +138,10 @@ gh_edit_branch: "main" # the branch that your docs is served from
 gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
 
 # Color scheme currently only supports "dark", "light"/nil (default), or a custom scheme that you define
-color_scheme: light
+color_scheme: phfic
 
+# Custom Callouts
+# See issue: https://github.com/just-the-docs/just-the-docs/issues/1011
 callouts_level: quiet # or loud
 callouts:
   highlight:
@@ -151,12 +154,13 @@ callouts:
     color: green
   note:
     title: Note
-    color: purple
+    color: primary
   warning:
     title: Warning
     color: red
 
 # Google Analytics Tracking ## TODO
+# See issue: https://github.com/just-the-docs/just-the-docs/issues/1023
 # e.g, UA-1234567-89
 # ga_tracking: UA-2709176-10
 # ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)

@@ -9,8 +9,8 @@ by the Public Health FHIR&reg; Implementation Collaborative (PHFIC).
 
 <br />
 
-[Get started now](/playbook/introduction/index){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Back to home](//phfic.github.io){: .btn .btn-blue .fs-5 .mb-4 .mb-md-0 .mr-2}
+[Get started now](/playbook/introduction/index){: .btn .btn-tertiary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[Back to home](//phfic.github.io){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2}
 [Submit feedback](#){: .btn .btn-green .fs-5 .mb-4 .mb-md-0 .mr-2} <!-- todo: survey link -->
 
 <h2 class="bg-red-100 p-4 p-md-2">Web Draft Version 1 - Work in progress</h2>
