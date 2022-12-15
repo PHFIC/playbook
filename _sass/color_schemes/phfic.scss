@@ -1,9 +1,9 @@
 $primary: #871a4e;
 $secondary: #f7941d;
 $tertiary: #e64c3c;
-$black: darken($primary, 20%);
+$black: darken($primary, 70%);
 
-$body-background-color: $grey-dk-300;
+$body-background-color: $white;
 $sidebar-color: lighten($secondary, 10%);
 $border-color: $primary;
 
@@ -12,7 +12,7 @@ $body-heading-color: $black;
 $nav-child-link-color: $blue-100;
 $search-result-preview-color: $grey-dk-000;
 
-$link-color: $blue-000;
+$link-color: $black;
 $btn-primary-color: $primary;
 $base-button-color: $tertiary;
 
@@ -20,3 +20,11 @@ $code-background-color: $grey-dk-250;
 $search-background-color: $grey-dk-250;
 $table-background-color: $grey-dk-250;
 $feedback-color: darken($sidebar-color, 3%);
+
+$nav-width: 20vw;
+$nav-width-md: 248px;
+$nav-list-item-height: $sp-6;
+$nav-list-item-height-sm: $sp-8;
+$nav-list-expander-right: true;
+$content-width: 80vw;
+$header-height: 60px;
