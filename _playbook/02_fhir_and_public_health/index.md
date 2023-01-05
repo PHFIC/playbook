@@ -3,9 +3,22 @@ layout: default
 title: FHIR and Public Health
 nav_order: 2
 has_children: true
+has_toc: false
 ---
 
 # FHIR Basics for Public Health
+{: .no_toc }
+
+<hr />
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+<hr />
 
 ## FHIR's Value to Public Health
 

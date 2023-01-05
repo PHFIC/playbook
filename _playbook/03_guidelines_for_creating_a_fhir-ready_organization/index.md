@@ -3,9 +3,22 @@ layout: default
 title: Guidelines for Creating a FHIR-Ready Organization
 nav_order: 5
 has_children: true
+has_toc: false
 ---
 
 # Guidelines for Creating a FHIR-Ready Organization
+{: .no_toc }
+
+<hr />
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+<hr />
 
 ## Identify Your Leader and Executive Sponsor
 
