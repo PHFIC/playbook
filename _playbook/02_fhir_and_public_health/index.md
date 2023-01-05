@@ -2,7 +2,7 @@
 layout: default
 title: FHIR and Public Health
 nav_order: 2
-has_children: true
+#has_children: true
 has_toc: false
 ---
 
