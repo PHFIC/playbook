@@ -21,20 +21,21 @@ class Generate < Thor
     end
 
 
-    desc "chapter TITLE [--filename NAME] [--permalink LINK]", "Add a new chapter in playbook collection"
+    desc "chapter TITLE", "Add a new chapter in playbook collection"
     method_option :dirname, :type => :string, :aliases => '-d'
     method_option :permalink, :type => :string, :aliases => '-p'
     def chapter(title)
         @title = title
         @dirname = options[:dirname] || title.downcase.gsub(' ', '_').underscore
         @permalink = options[:permalink] || @dirname.dasherize
-        dirpath = File.join(PLAYBOOK_PATH, @dirname, 'index.md')
+        dirpath = File.join(PLAYBOOK_PATH, @dirname)
+        @order = count_pages(PLAYBOOK_PATH)
 
         FileUtils.mkdir_p( dirpath )
         template('index.md.erb', File.join(dirpath, 'index.md'))
     end
 
-    desc "page TITLE --dirname DIR [--filename NAME] [--permalink LINK] [--chapter PARENT] [--order N]", "Add a new page in a playbook chapter"
+    desc "page TITLE", "Add a new page in a playbook chapter"
     method_option :filename, :type => :string, :aliases => '-f'
     method_option :permalink, :type => :string, :aliases => '-p'
     method_option :chapter, :type => :string, :aliases => '-c'
