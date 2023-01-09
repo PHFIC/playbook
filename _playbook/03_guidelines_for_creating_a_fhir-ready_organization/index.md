@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Guidelines for Creating a FHIR-Ready Organization
+permalink: guidelines-for-creating-a-fhir-ready-organization
 nav_order: 5
-#has_children: true
+has_children: true
 has_toc: false
 ---
 

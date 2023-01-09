@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Implementing FHIR Use Cases
+permalink: implementing-fhir-use-cases
 nav_order: 6
-#has_children: true
+has_children: true
 has_toc: false
 ---
 

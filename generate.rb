@@ -7,6 +7,7 @@
 
 require 'thor'
 require 'active_support/core_ext/string'
+require 'fileutils'
 
 class Generate < Thor
 
@@ -20,6 +21,20 @@ class Generate < Thor
     end
 
 
+    desc "chapter TITLE [--filename NAME] [--permalink LINK]" "Add a new chapter in playbook collection"
+    method_option :filename, :type => :string, :aliases => '-f'
+    method_option :permalink, :type => :string, :aliases => '-p'
+    def chapter(title)
+        @title = title
+        @filename = options[:filename] || title.downcase.gsub(' ', '_').underscore
+        @permalink = options[:permalink] || @filename.dasherize
+        path = File.join(PLAYBOOK_PATH, @filename += '.md')
+
+        FileUtils.mkdir_p( path )
+        template('index.md.erb', path)
+    end
+
+
     desc "section_link CHAPTER SECTION", "Add markdown section link to nav child links, use pretty args"
     method_option :order, :type => :numeric, :aliases => '-o'
     def section_link(parent, section)
@@ -29,7 +44,7 @@ class Generate < Thor
         parent = parent.gsub(' ', '_').downcase.underscore
         section = section.gsub(' ', '_').downcase.underscore
 
-        @permalink = "/#{parent}##{section.dasherize}"
+        @permalink = "/#{parent.dasherize}##{section.dasherize}"
 
         if options[:order]
             @prder = options[:order].to_i
