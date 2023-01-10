@@ -83,7 +83,7 @@ class Generate < Thor
 
         @grand_parent = options[:grand_parent] || false
         @children = options[:children].to_s
-        @permalink = "/#{parent.dasherize}##{title.dasherize}"
+        @permalink = options[:permalink] || "/#{parent.dasherize}##{title.dasherize}"
 
         # Assumes last directory if not provided
         parent_order_str = serial( count_pages( PLAYBOOK_PATH ) )
