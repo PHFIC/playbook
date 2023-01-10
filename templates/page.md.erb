@@ -3,7 +3,9 @@ layout: default
 title: <%= @title %>
 permalink: <%= @permalink %>
 nav_order: <%= @order %>
-parent: <%= @chapter %>
+has_children: <%= @children %>
+<% if @parent %>parent: <%= @parent %><% end %>
+<% if @grand_parent %>grand_parent: <%= @grand_parent %><% end %>
 ---
 
 # <%= @title %>

@@ -36,19 +36,33 @@ class Generate < Thor
     end
 
     # TODO: make this cleaner and similar to generate:section_link
-    desc "page TITLE", "Add a new page in a playbook chapter"
+    desc "page TITLE [PARENT]", "Add a new page in the playbook"
     method_option :filename, :type => :string, :aliases => '-f'
     method_option :permalink, :type => :string, :aliases => '-p'
-    method_option :chapter, :type => :string, :aliases => '-c'
-    method_option :dirname, :type => :string, :aliases => '-d', :required => true
+    method_option :dirname, :type => :string, :aliases => '-d'
     method_option :order, :type => :numeric, :aliases => '-o'
-    def page(title)
+    method_option :children, :type => :boolean, :aliases => '-c', :default => false
+    method_option :grand_parent, :type => :string, :aliases => '-g', :default => nil
+    def page(title, parent = false)
         @title = title
+        @parent = parent
+
         @filename = options[:filename] || title.downcase.gsub(' ', '_').underscore
-        @chapter = options[:chapter] || options[:dirname].titleize
-        @permalink = options[:permalink] || File.join( options[:dirname], @filename.dasherize )
-        @order = options[:order] || count_pages(File.join(PLAYBOOK_PATH, options[:dirname]))
-        path = File.join(PLAYBOOK_PATH, options[:dirname], @filename += '.md')
+        @grand_parent = options[:grand_parent]
+        @children = options[:children]
+
+        if options[:dirname]
+            dirpath = File.join(PLAYBOOK_PATH, options[:dirname])
+        elsif parent
+            dirpath = File.join(PLAYBOOK_PATH, parent.downcase.dasherize)
+        else
+            dirpath = PLAYBOOK_PATH
+        end
+
+        @permalink = options[:permalink] || File.join( dirpath, @filename.dasherize )
+        @order = options[:order] || count_pages(dirpath)
+        path = File.join(dirpath, @filename += '.md')
+        say("Mapping #{@permalink} to #{path}", :yellow)
 
         template('page.md.erb', path)
     end
@@ -57,6 +71,7 @@ class Generate < Thor
     method_option :dirname, :type => :string, :aliases => '-d'
     method_option :filename, :type => :string, :aliases => '-f'
     method_option :children, :type => :boolean, :aliases => '-c', default: false
+    method_option :grand_parent, :type => :string, :aliases => '-g'
     method_option :order, :type => :numeric, :aliases => '-o'
     method_option :permalink, :type => :string, :aliases => '-p'
     def section_link(title, parent)
@@ -66,6 +81,7 @@ class Generate < Thor
         parent = parent.gsub(' ', '_').downcase.underscore
         title = title.gsub(' ', '_').downcase.underscore
 
+        @grand_parent = options[:grand_parent] || false
         @children = options[:children].to_s
         @permalink = "/#{parent.dasherize}##{title.dasherize}"
 

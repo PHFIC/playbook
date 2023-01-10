@@ -1,13 +1,9 @@
 ---
 title: <%= @title %>
 permalink: <%= @permalink %>
-<% if @grand_parent %>
-grand_parent: <% @grand_parent %>
-<% end %>
 parent: <%= @parent %>
 nav_order: <%= @order %>
-<% if @children %>
-has_children: <%= @children %>
-<% end %>
+<% if @children %>has_children: <%= @children %><% end %>
+<% if @grand_parent %>grand_parent: <% @grand_parent %><% end %>
 # This page exists only to add main navigation child link to section
 ---
