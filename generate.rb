@@ -28,13 +28,14 @@ class Generate < Thor
         @title = title
         @dirname = options[:dirname] || title.downcase.gsub(' ', '_').underscore
         @permalink = options[:permalink] || @dirname.dasherize
-        dirpath = File.join(PLAYBOOK_PATH, @dirname)
         @order = count_pages(PLAYBOOK_PATH)
 
+        dirpath = File.join(PLAYBOOK_PATH, @dirname)
         FileUtils.mkdir_p( dirpath )
         template('index.md.erb', File.join(dirpath, 'index.md'))
     end
 
+    # TODO: make this cleaner and similar to generate:section_link
     desc "page TITLE", "Add a new page in a playbook chapter"
     method_option :filename, :type => :string, :aliases => '-f'
     method_option :permalink, :type => :string, :aliases => '-p'
@@ -52,27 +53,34 @@ class Generate < Thor
         template('page.md.erb', path)
     end
 
-    desc "section_link CHAPTER SECTION", "Add markdown section link to nav child links, use pretty args"
+    desc "section_link TITLE PARENT", "Add markdown section link to nav child links, use pretty args"
+    method_option :dirname, :type => :string, :aliases => '-d'
+    method_option :filename, :type => :string, :aliases => '-f'
+    method_option :children, :type => :boolean, :aliases => '-c', default: false
     method_option :order, :type => :numeric, :aliases => '-o'
-    def section_link(parent, section)
+    method_option :permalink, :type => :string, :aliases => '-p'
+    def section_link(title, parent)
         @parent = parent
-        @title = section
+        @title = title
 
         parent = parent.gsub(' ', '_').downcase.underscore
-        section = section.gsub(' ', '_').downcase.underscore
+        title = title.gsub(' ', '_').downcase.underscore
 
-        @permalink = "/#{parent.dasherize}##{section.dasherize}"
+        @children = options[:children].to_s
+        @permalink = "/#{parent.dasherize}##{title.dasherize}"
 
-        if options[:order]
-            @order = options[:order].to_i
-        else # count files in _playbook/<parent>/ to derive link order number
-            parent_dirname = Dir.children(PLAYBOOK_PATH).select { |subdir| subdir.upcase.match? parent.upcase }.first
-            @order = Dir.children( File.join(PLAYBOOK_PATH, parent_dirname) ).reject { |f| f.starts_with? '.' }.length
-            say("Identified directory #{parent_dirname} for #{@parent}, using order #{@order}", :yellow)
-        end
-        order_str = (@order > 9) ? @order.to_s : "0#{@order}"
+        # Assumes last directory if not provided
+        parent_order_str = serial( count_pages( PLAYBOOK_PATH ) )
+        @dirname = options[:dirname] || "#{parent_order_str}_#{parent.underscore}"
+        say("Directory #{@dirname} not found", :red) unless Dir.exist? File.join(PLAYBOOK_PATH, @dirname)
 
-        file_path = File.join(PLAYBOOK_PATH, parent_dirname, "#{order_str}_#{section}.md")
+        @order = options[:order]&.to_i || count_pages(File.join( PLAYBOOK_PATH, @dirname) )
+        order_str = serial(@order)
+
+        @filename = options[:filename] || "#{order_str}_#{title.underscore}"
+        file_path = File.join(PLAYBOOK_PATH, @dirname, @filename += '.md')
+
+        say("Permalink #{@permalink} will map to #{@dirname}/#{@filename} with nav order #{@order}", :yellow)
         
         template("section_link.md.erb", file_path);
     end
@@ -80,9 +88,14 @@ class Generate < Thor
 
     private
 
-    # count number of markdown files in directory
+    # count number of non-hidden files in directory
     def count_pages(dir_path)
-        Dir.children(dir_path).select { |f| f.ends_with? '.md' }.length
+        Dir.children(dir_path).reject { |f| f.starts_with? '.' }.length
+    end
+
+    # convert int i to 0d or dd format string
+    def serial(i)
+        "%02d" % i
     end
 
 end

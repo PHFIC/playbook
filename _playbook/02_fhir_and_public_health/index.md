@@ -7,7 +7,7 @@ has_children: true
 has_toc: false
 ---
 
-# FHIR Basics for Public Health
+# FHIR and Public Health
 {: .no_toc }
 
 <hr />
