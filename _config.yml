@@ -18,7 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: PHFIC Playbook
+title: Public Health FHIR® Implementation Collaborative
+search_label: PHFIC Playbook # Search bar placeholder which was bifurcated from title
 email: phfic@mitre.org
 description: >-
     The official playbook for bringing Fast Healthcare Interoperability
