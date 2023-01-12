@@ -1,5 +1,6 @@
 ---
 layout: home
+title: Playbook
 ---
 
 <h1>FHIR&reg; Playbook for Public Health <span class="label label-red">DRAFT</span></h1>

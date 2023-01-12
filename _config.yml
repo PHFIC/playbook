@@ -18,7 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: PHFIC Playbook
+title: Public Health FHIR® Implementation Collaborative
+search_label: PHFIC Playbook # Search bar placeholder which was bifurcated from title
 email: phfic@mitre.org
 description: >-
     The official playbook for bringing Fast Healthcare Interoperability
@@ -52,6 +53,9 @@ exclude:
  # specific to the this website:
    - LICENSE
    - README.md
+   - generate.rb
+   - generate.thor
+   - templates/
 
 # Set a path/url to a logo that will be displayed instead of the title
 logo: "/assets/images/PHFIC_LogoAlt_Color@3x.png"
@@ -100,6 +104,14 @@ heading_anchors: true
 aux_links:
   "Home":
     - "//phfic.github.io"
+  "About":
+    - "//phfic.github.io/about"
+  "Calendar":
+    - "//phfic.github.io/calendar"
+  "Services":
+    - "//phfic.github.io/#offerings"
+  "Contact":
+    - "//phfic.github.io/contact"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
@@ -121,7 +133,8 @@ nav_external_links:
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: "Copyright &copy; 2022 MITRE. Distributed by the <a href=\"https://github.com/PHFIC/playbook/blob/main/LICENSE\">Apache-2 license.</a>"
+# Depreciated - coded into _includes/footer_custom.html
+# footer_content: "Copyright &copy; 2022 MITRE. Distributed by the <a href=\"https://github.com/PHFIC/playbook/blob/main/LICENSE\">Apache-2 license.</a>"
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter

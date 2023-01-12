@@ -1,0 +1,9 @@
+---
+title: <%= @title %>
+permalink: <%= @permalink %>
+parent: <%= @parent %>
+nav_order: <%= @order %>
+<% if @grand_parent %>grand_parent: <%= @grand_parent %><% end %>
+<% if @children %>has_children: <%= @children %><% end %>
+# This page exists only to add main navigation child link to section
+---

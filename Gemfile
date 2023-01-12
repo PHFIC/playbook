@@ -41,3 +41,7 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 # Required for Ruby 3 & Jekyll
 gem "webrick", "~> 1.7"
+
+gem "thor", "~> 1.2"
+
+gem "activesupport", "~> 7.0"
